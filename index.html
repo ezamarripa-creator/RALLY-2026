@@ -10,7 +10,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <style>
         [x-cloak] { display: none !important; }
         .tab-active { border-bottom: 3px solid #facc15; color: #facc15; font-weight: bold; }
@@ -41,14 +40,14 @@
             <div class="flex flex-col md:flex-row justify-between items-end gap-4 border-b border-slate-200 pb-6">
                 <div>
                     <h2 class="text-4xl font-black text-slate-800 tracking-tight uppercase">Tabla de clasificación</h2>
-                    <p class="text-slate-500 font-medium italic">Datos sincronizados desde CSV oficial</p>
+                    <p class="text-slate-500 font-medium italic">Clasificación oficial por sumatoria de puntos (Sincronizado con GitHub)</p>
                 </div>
                 <div class="flex gap-3">
                     <button @click="exportarExcel()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-bold shadow-lg transition flex items-center gap-2">
-                        <i data-lucide="download" class="w-4 h-4"></i> Excel
+                        <i data-lucide="download" class="w-4 h-4"></i> Excel Elegante
                     </button>
                     <button @click="exportarPDF()" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-bold shadow-lg transition flex items-center gap-2">
-                        <i data-lucide="file-text" class="w-4 h-4"></i> PDF Oficial
+                        <i data-lucide="file-text" class="w-4 h-4"></i> PDF Formato Oficial
                     </button>
                 </div>
             </div>
@@ -96,8 +95,12 @@
                         <h2 class="text-3xl font-black uppercase tracking-tighter">Buscador y Reportes</h2>
                         <p class="text-slate-400 text-sm">Filtra equipos para generar reportes individuales</p>
                     </div>
-                    <div>
-                        <button @click="limpiarDatos()" class="bg-red-500/20 hover:bg-red-500 text-red-200 px-5 py-3 rounded-xl font-bold transition text-xs uppercase">Limpiar Caché Local</button>
+                    <div class="flex flex-wrap gap-3">
+                        <button @click="cargarDesdeGitHub()" class="bg-amber-500 hover:bg-amber-400 text-slate-900 px-5 py-3 rounded-xl font-bold transition text-xs uppercase flex items-center gap-2">
+                            <i data-lucide="refresh-cw" class="w-4 h-4"></i> Actualizar desde GitHub
+                        </button>
+                        <input type="file" id="csvInput" accept=".csv" class="hidden" @change="importarCSV($event)">
+                        <button @click="document.getElementById('csvInput').click()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-black shadow-xl transition text-xs uppercase">Importar Local</button>
                     </div>
                 </div>
 
@@ -141,88 +144,92 @@
                     </div>
                 </template>
             </div>
-            
-            <div x-show="filteredRanking().length === 0" class="text-center py-20">
-                <div class="text-slate-300 mb-4"><i data-lucide="inbox" class="w-16 h-16 mx-auto"></i></div>
-                <p class="text-slate-400 font-bold uppercase tracking-widest">No hay datos para mostrar</p>
-            </div>
         </section>
     </main>
 
     <script>
+        const GITHUB_DATA_URL = 'datos.csv'; // Archivo en la misma carpeta del repositorio
+
         function rallyApp() {
             return {
                 view: 'dashboard',
                 search: '',
                 rawData: [],
-                GITHUB_DATA_URL: 'datos.csv', // Carga desde el archivo CSV en el mismo repo
 
-                async init() {
-                    try {
-                        // Uso de PapaParse para descargar y convertir el CSV a JSON automáticamente
-                        Papa.parse(this.GITHUB_DATA_URL, {
-                            download: true,
-                            header: true,
-                            dynamicTyping: true,
-                            skipEmptyLines: true,
-                            complete: (results) => {
-                                this.rawData = results.data;
-                                console.log("Datos CSV cargados y parseados:", this.rawData);
-                                localStorage.setItem('rally_data_v2026', JSON.stringify(this.rawData));
-                                setTimeout(() => lucide.createIcons(), 100);
-                            },
-                            error: (error) => {
-                                console.error("Error con PapaParse:", error);
-                                this.cargarDesdeCache();
-                            }
-                        });
-                        
-                    } catch (error) {
-                        console.error("Error en el proceso de carga:", error);
-                        this.cargarDesdeCache();
-                    }
-                },
-
-                cargarDesdeCache() {
+                init() {
+                    // Primero intenta cargar datos locales si existen
                     const saved = localStorage.getItem('rally_data_v2026');
                     if (saved) {
                         this.rawData = JSON.parse(saved);
-                        setTimeout(() => lucide.createIcons(), 100);
+                    }
+                    
+                    // Carga automática desde GitHub al iniciar
+                    this.cargarDesdeGitHub();
+                    
+                    setTimeout(() => lucide.createIcons(), 100);
+                },
+
+                async cargarDesdeGitHub() {
+                    try {
+                        const response = await fetch(GITHUB_DATA_URL);
+                        if (!response.ok) throw new Error('No se pudo encontrar el archivo en GitHub');
+                        
+                        const csvText = await response.text();
+                        const workbook = XLSX.read(csvText, { type: 'string' });
+                        const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                        const json = XLSX.utils.sheet_to_json(sheet);
+                        
+                        this.processJsonData(json);
+                        console.log("Datos sincronizados desde GitHub correctamente.");
+                    } catch (error) {
+                        console.error("Error al cargar desde GitHub:", error);
                     }
                 },
 
-                limpiarDatos() {
-                    if(confirm("¿Deseas limpiar los datos guardados en este navegador?")) {
-                        localStorage.removeItem('rally_data_v2026');
-                        location.reload();
-                    }
+                findKey(obj, target) {
+                    const key = Object.keys(obj).find(k => k.trim().toLowerCase() === target.toLowerCase());
+                    return key ? obj[key] : null;
+                },
+
+                processJsonData(json) {
+                    this.rawData = json.map(row => ({
+                        id: this.findKey(row, 'id'),
+                        nombre: this.findKey(row, 'nombre'),
+                        plantel: this.findKey(row, 'plantel'),
+                        turno: this.findKey(row, 'turno'),
+                        estacion: this.findKey(row, 'estacion'),
+                        puntajeEstacion: parseFloat(this.findKey(row, 'puntajeEstacion')) || 0
+                    }));
+                    localStorage.setItem('rally_data_v2026', JSON.stringify(this.rawData));
+                    setTimeout(() => lucide.createIcons(), 100);
+                },
+
+                importarCSV(event) {
+                    const file = event.target.files[0];
+                    if (!file) return;
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const data = e.target.result;
+                        const workbook = XLSX.read(data, { type: 'binary' });
+                        const json = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
+                        this.processJsonData(json);
+                        alert(`¡Éxito! Se cargaron ${json.length} registros locales.`);
+                    };
+                    reader.readAsBinaryString(file);
                 },
 
                 getRanking() {
                     const equiposMap = {};
                     this.rawData.forEach(row => {
-                        // Soporta encabezados en minúsculas o Capitalizados
-                        const id = row.id || row.ID;
+                        const id = row.id;
                         if (!id) return;
-                        
                         if (!equiposMap[id]) {
-                            equiposMap[id] = { 
-                                id, 
-                                nombre: row.nombre || row.Nombre, 
-                                plantel: row.plantel || row.Plantel, 
-                                turno: row.turno || row.Turno, 
-                                numEstaciones: 0, 
-                                puntosAcademicos: 0, 
-                                detalles: [] 
-                            };
+                            equiposMap[id] = { id, nombre: row.nombre, plantel: row.plantel, turno: row.turno, numEstaciones: 0, puntosAcademicos: 0, detalles: [] };
                         }
-                        const pts = parseFloat(row.puntos || row.Puntos || row.puntajeEstacion || row.Puntaje) || 0;
-                        const est = row.estacion || row.Estacion;
-                        
-                        if (est) {
+                        if (row.estacion) {
                             equiposMap[id].numEstaciones++;
-                            equiposMap[id].puntosAcademicos += pts;
-                            equiposMap[id].detalles.push({ estacion: est, puntos: pts });
+                            equiposMap[id].puntosAcademicos += row.puntajeEstacion;
+                            equiposMap[id].detalles.push({ estacion: row.estacion, puntos: row.puntajeEstacion });
                         }
                     });
                     return Object.values(equiposMap).sort((a, b) => b.puntosAcademicos - a.puntosAcademicos);
@@ -248,39 +255,51 @@
                     }));
                     const ws = XLSX.utils.json_to_sheet(data);
                     const wb = XLSX.utils.book_new();
-                    XLSX.utils.book_append_sheet(wb, ws, "Ranking");
-                    XLSX.writeFile(wb, "Rally_Ranking_2026.xlsx");
+                    ws['!cols'] = [{wch: 10}, {wch: 35}, {wch: 25}, {wch: 15}, {wch: 15}, {wch: 15}];
+                    XLSX.utils.book_append_sheet(wb, ws, "Ranking Rally 2026");
+                    XLSX.writeFile(wb, "Rally_Reporte_General.xlsx");
                 },
 
                 async exportarReporteIndividual(eq) {
                     const { jsPDF } = window.jspdf;
                     const doc = new jsPDF();
                     doc.setFillColor(30, 41, 59);
-                    doc.rect(0, 0, 210, 40, 'F');
+                    doc.rect(0, 0, 210, 60, 'F');
+                    doc.setTextColor(250, 204, 21);
+                    doc.setFontSize(10);
+                    doc.text("REPORTE INDIVIDUAL DE RENDIMIENTO ACADÉMICO", 15, 20);
                     doc.setTextColor(255, 255, 255);
-                    doc.setFontSize(22);
-                    doc.text(eq.nombre.toUpperCase(), 15, 25);
+                    doc.setFontSize(28);
+                    doc.text(eq.nombre.toUpperCase(), 15, 35);
+                    doc.setFontSize(12);
+                    doc.text(`${eq.plantel} | Turno: ${eq.turno}`, 15, 45);
                     doc.autoTable({
-                        startY: 50,
-                        head: [['Estación', 'Puntos']],
-                        body: eq.detalles.map(d => [d.estacion, d.puntos]),
-                        theme: 'grid'
+                        startY: 70,
+                        head: [['Estación Participada', 'Puntos Obtenidos', 'Estatus']],
+                        body: eq.detalles.map(d => [d.estacion, d.puntos, 'Completado']),
+                        theme: 'grid',
+                        headStyles: { fillColor: [30, 41, 59] }
                     });
-                    doc.save(`Reporte_${eq.nombre}.pdf`);
+                    doc.save(`Reporte_${eq.nombre.replace(/\s+/g, '_')}.pdf`);
                 },
 
                 async exportarPDF() {
                     const { jsPDF } = window.jspdf;
                     const doc = new jsPDF();
                     const ranking = this.getRanking();
-                    doc.setFontSize(18);
-                    doc.text("RANKING GENERAL RALLY 2026", 15, 20);
+                    doc.setFillColor(30, 41, 59);
+                    doc.rect(0, 0, 210, 40, 'F');
+                    doc.setTextColor(255, 255, 255);
+                    doc.setFontSize(20);
+                    doc.text("REPORTE OFICIAL RALLY ACADÉMICO 2026", 15, 25);
                     doc.autoTable({
-                        startY: 30,
-                        head: [['Pos', 'Equipo', 'Plantel', 'Puntaje']],
-                        body: ranking.map((eq, i) => [i+1, eq.nombre, eq.plantel, eq.puntosAcademicos.toFixed(1)]),
+                        startY: 50,
+                        head: [['Posición', 'Equipo', 'Plantel', 'Turno', 'Puntaje Total']],
+                        body: ranking.map((eq, i) => [i + 1, eq.nombre, eq.plantel, eq.turno, eq.puntosAcademicos.toFixed(1)]),
+                        theme: 'striped',
+                        headStyles: { fillColor: [79, 70, 229] }
                     });
-                    doc.save("Ranking_General.pdf");
+                    doc.save("Ranking_Final_Oficial_2026.pdf");
                 }
             }
         }
