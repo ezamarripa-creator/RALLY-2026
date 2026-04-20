@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rally Académico 2026 - Gestión Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+        .tab-active { border-bottom: 3px solid #facc15; color: #facc15; font-weight: bold; }
+        html, body { height: 100%; overflow-y: auto; scroll-behavior: smooth; }
+        .main-container { min-height: 100vh; padding-bottom: 50px; }
+        .card-zoom { transition: transform 0.3s ease; }
+        .card-zoom:hover { transform: translateY(-5px); }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans" x-data="rallyApp()">
+
+    <nav class="bg-slate-900 text-white shadow-2xl sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="bg-indigo-600 p-2 rounded-lg"><i data-lucide="award" class="text-white w-6 h-6"></i></div>
+                <h1 class="text-2xl font-black tracking-tighter uppercase italic">Rally <span class="text-indigo-400">2026</span></h1>
+            </div>
+            <div class="flex gap-8 items-center text-xs font-bold uppercase tracking-widest">
+                <button @click="view = 'dashboard'" :class="view === 'dashboard' ? 'tab-active' : ''" class="hover:text-yellow-400 transition py-2">Dashboard</button>
+                <button @click="view = 'equipos'" :class="view === 'equipos' ? 'tab-active' : ''" class="hover:text-yellow-400 transition py-2 text-indigo-300">Gestión y Filtros</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto p-4 lg:p-10 main-container">
+        
+        <section x-show="view === 'dashboard'" x-cloak class="space-y-6">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-4 border-b border-slate-200 pb-6">
+                <div>
+                    <h2 class="text-4xl font-black text-slate-800 tracking-tight uppercase">Tabla de clasificación</h2>
+                    <p class="text-slate-500 font-medium italic">Clasificación oficial por sumatoria de puntos (Carga desde GitHub)</p>
+                </div>
+                <div class="flex gap-3">
+                    <button @click="exportarExcel()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-bold shadow-lg transition flex items-center gap-2">
+                        <i data-lucide="download" class="w-4 h-4"></i> Excel Elegante
+                    </button>
+                    <button @click="exportarPDF()" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-xl font-bold shadow-lg transition flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-4 h-4"></i> PDF Formato Oficial
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-[2rem] shadow-xl overflow-hidden border border-slate-200">
+                <table class="w-full border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-400 text-[10px] uppercase tracking-widest border-b">
+                            <th class="p-6 text-center">Posición</th>
+                            <th class="p-6 text-left">Equipo / Plantel</th>
+                            <th class="p-6 text-center">Progreso</th>
+                            <th class="p-6 text-center text-slate-900 font-black">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <template x-for="(eq, index) in getRanking()" :key="eq.id">
+                            <tr class="hover:bg-indigo-50/30 transition-colors">
+                                <td class="p-6 text-center">
+                                    <span class="text-3xl font-black italic text-slate-300" :class="index < 3 ? 'text-indigo-600' : ''" x-text="index + 1"></span>
+                                </td>
+                                <td class="p-6">
+                                    <div class="font-black text-slate-800 text-lg uppercase leading-tight" x-text="eq.nombre"></div>
+                                    <div class="text-xs font-bold text-slate-400 uppercase" x-text="`${eq.plantel} | ${eq.turno}`"></div>
+                                </td>
+                                <td class="p-6 text-center">
+                                    <div class="w-full bg-slate-100 h-2 rounded-full max-w-[100px] mx-auto overflow-hidden">
+                                        <div class="bg-indigo-500 h-full transition-all" :style="`width: ${eq.numEstaciones * 10}%` shadow-sm"></div>
+                                    </div>
+                                    <span class="text-[9px] font-bold text-slate-500" x-text="`${eq.numEstaciones} de 10 Estaciones` "></span>
+                                </td>
+                                <td class="p-6 text-center">
+                                    <span class="text-3xl font-black text-indigo-600" x-text="eq.puntosAcademicos.toFixed(1)"></span>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section x-show="view === 'equipos'" x-cloak class="space-y-8">
+            <div class="bg-slate-900 p-8 rounded-[2.5rem] shadow-2xl">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
+                    <div class="text-white">
+                        <h2 class="text-3xl font-black uppercase tracking-tighter">Buscador y Reportes</h2>
+                        <p class="text-slate-400 text-sm">Filtra equipos para generar reportes individuales</p>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <button @click="limpiarDatos()" class="bg-red-500/20 hover:bg-red-500 text-red-200 px-5 py-3 rounded-xl font-bold transition text-xs uppercase">Borrar Todo</button>
+                        <input type="file" id="csvInput" accept=".csv" class="hidden" @change="importarCSV($event)">
+                        <button @click="document.getElementById('csvInput').click()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-black shadow-xl transition text-xs uppercase">Importar CSV</button>
+                    </div>
+                </div>
+
+                <div class="relative max-w-2xl mx-auto">
+                    <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5"></i>
+                    <input 
+                        type="text" 
+                        x-model="search" 
+                        placeholder="Buscar por nombre de equipo o plantel..." 
+                        class="w-full bg-slate-800 border-none text-white p-4 pl-12 rounded-2xl focus:ring-2 focus:ring-yellow-400 transition"
+                    >
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <template x-for="eq in filteredRanking()" :key="eq.id">
+                    <div class="bg-white p-6 rounded-[2rem] shadow-lg border border-slate-100 flex flex-col card-zoom">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-black text-slate-800 uppercase italic leading-none mb-1" x-text="eq.nombre"></h3>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest" x-text="`${eq.plantel} • ${eq.turno}`"></p>
+                            </div>
+                            <button @click="exportarReporteIndividual(eq)" class="bg-slate-100 hover:bg-indigo-600 hover:text-white p-2 rounded-lg transition-colors group">
+                                <i data-lucide="printer" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="flex-grow space-y-2 mb-6 border-t pt-4">
+                            <template x-for="res in eq.detalles">
+                                <div class="flex justify-between text-xs py-2 border-b border-slate-50 last:border-0">
+                                    <span class="text-slate-500 font-medium" x-text="res.estacion"></span>
+                                    <span class="font-black text-indigo-600" x-text="res.puntos"></span>
+                                </div>
+                            </template>
+                        </div>
+
+                        <div class="bg-indigo-600 text-white p-5 rounded-2xl text-center shadow-lg">
+                            <p class="text-[9px] uppercase font-bold text-indigo-200 mb-1">Puntaje Acumulado</p>
+                            <span class="text-4xl font-black" x-text="eq.puntosAcademicos.toFixed(1)"></span>
+                        </div>
+                    </div>
+                </template>
+            </div>
+            
+            <div x-show="filteredRanking().length === 0" class="text-center py-20">
+                <div class="text-slate-300 mb-4"><i data-lucide="inbox" class="w-16 h-16 mx-auto"></i></div>
+                <p class="text-slate-400 font-bold uppercase tracking-widest">No se encontraron equipos</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function rallyApp() {
+            return {
+                view: 'dashboard',
+                search: '',
+                rawData: [],
+                GITHUB_DATA_URL: 'datos.json', // Ruta relativa en el repositorio
+
+                async init() {
+                    // 1. Intentar cargar desde GitHub/Servidor
+                    try {
+                        const response = await fetch(this.GITHUB_DATA_URL);
+                        if (response.ok) {
+                            this.rawData = await response.json();
+                            console.log("Datos cargados desde GitHub");
+                        } else {
+                            throw new Error("No se pudo cargar el archivo datos.json");
+                        }
+                    } catch (error) {
+                        console.warn("Cargando desde localStorage como respaldo:", error);
+                        // 2. Respaldo: Cargar de LocalStorage si falla el fetch
+                        const saved = localStorage.getItem('rally_data_v2026');
+                        if (saved) this.rawData = JSON.parse(saved);
+                    }
+
+                    setTimeout(() => lucide.createIcons(), 100);
+                },
+
+                findKey(obj, target) {
+                    const key = Object.keys(obj).find(k => k.trim().toLowerCase() === target.toLowerCase());
+                    return key ? obj[key] : null;
+                },
+
+                importarCSV(event) {
+                    const file = event.target.files[0];
+                    if (!file) return;
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const data = e.target.result;
+                        const workbook = XLSX.read(data, { type: 'binary' });
+                        const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                        const json = XLSX.utils.sheet_to_json(sheet);
+                        
+                        this.rawData = json.map(row => ({
+                            id: this.findKey(row, 'id'),
+                            nombre: this.findKey(row, 'nombre'),
+                            plantel: this.findKey(row, 'plantel'),
+                            turno: this.findKey(row, 'turno'),
+                            estacion: this.findKey(row, 'estacion'),
+                            puntajeEstacion: parseFloat(this.findKey(row, 'puntajeEstacion')) || 0
+                        }));
+
+                        localStorage.setItem('rally_data_v2026', JSON.stringify(this.rawData));
+                        alert(`¡Éxito! Se cargaron ${this.rawData.length} registros localmente.`);
+                        this.view = 'dashboard';
+                        setTimeout(() => lucide.createIcons(), 100);
+                    };
+                    reader.readAsBinaryString(file);
+                },
+
+                limpiarDatos() {
+                    if(confirm("¿Seguro que deseas eliminar todos los datos locales? Esto no afectará el archivo en GitHub.")) {
+                        this.rawData = [];
+                        localStorage.removeItem('rally_data_v2026');
+                        location.reload();
+                    }
+                },
+
+                getRanking() {
+                    const equiposMap = {};
+                    this.rawData.forEach(row => {
+                        const id = row.id;
+                        if (!id) return;
+                        if (!equiposMap[id]) {
+                            equiposMap[id] = { id, nombre: row.nombre, plantel: row.plantel, turno: row.turno, numEstaciones: 0, puntosAcademicos: 0, detalles: [] };
+                        }
+                        if (row.estacion) {
+                            equiposMap[id].numEstaciones++;
+                            equiposMap[id].puntosAcademicos += row.puntajeEstacion;
+                            equiposMap[id].detalles.push({ estacion: row.estacion, puntos: row.puntajeEstacion });
+                        }
+                    });
+                    return Object.values(equiposMap).sort((a, b) => b.puntosAcademicos - a.puntosAcademicos);
+                },
+
+                filteredRanking() {
+                    const query = this.search.toLowerCase();
+                    return this.getRanking().filter(eq => 
+                        eq.nombre.toLowerCase().includes(query) || 
+                        eq.plantel.toLowerCase().includes(query)
+                    );
+                },
+
+                async exportarExcel() {
+                    const ranking = this.getRanking();
+                    const data = ranking.map((eq, i) => ({
+                        'Posición': i + 1,
+                        'Equipo': eq.nombre,
+                        'Plantel': eq.plantel,
+                        'Turno': eq.turno,
+                        'Estaciones': eq.numEstaciones,
+                        'Puntaje Total': eq.puntosAcademicos.toFixed(1)
+                    }));
+                    const ws = XLSX.utils.json_to_sheet(data);
+                    const wb = XLSX.utils.book_new();
+                    ws['!cols'] = [{wch: 10}, {wch: 35}, {wch: 25}, {wch: 15}, {wch: 15}, {wch: 15}];
+                    XLSX.utils.book_append_sheet(wb, ws, "Ranking Rally 2026");
+                    XLSX.writeFile(wb, "Rally_Reporte_Elegante.xlsx");
+                },
+
+                async exportarReporteIndividual(eq) {
+                    const { jsPDF } = window.jspdf;
+                    const doc = new jsPDF();
+                    doc.setFillColor(30, 41, 59);
+                    doc.rect(0, 0, 210, 60, 'F');
+                    doc.setTextColor(250, 204, 21);
+                    doc.setFontSize(10);
+                    doc.setFont(undefined, 'bold');
+                    doc.text("REPORTE INDIVIDUAL DE RENDIMIENTO ACADÉMICO", 15, 20);
+                    doc.setTextColor(255, 255, 255);
+                    doc.setFontSize(28);
+                    doc.text(eq.nombre.toUpperCase(), 15, 35);
+                    doc.setFontSize(12);
+                    doc.setTextColor(148, 163, 184);
+                    doc.text(`${eq.plantel} | Turno: ${eq.turno}`, 15, 45);
+                    doc.setFillColor(79, 70, 229);
+                    doc.roundedRect(140, 15, 55, 35, 3, 3, 'F');
+                    doc.setTextColor(255, 255, 255);
+                    doc.setFontSize(10);
+                    doc.text("PUNTAJE TOTAL", 150, 28);
+                    doc.setFontSize(22);
+                    doc.text(`${eq.puntosAcademicos.toFixed(1)} pts`, 148, 42);
+                    doc.autoTable({
+                        startY: 70,
+                        head: [['Estación Participada', 'Puntos Obtenidos', 'Estatus']],
+                        body: eq.detalles.map(d => [d.estacion, d.puntos, 'Completado']),
+                        theme: 'grid',
+                        headStyles: { fillColor: [30, 41, 59] },
+                        styles: { fontSize: 10, cellPadding: 5 }
+                    });
+                    doc.save(`Reporte_${eq.nombre.replace(/\s+/g, '_')}.pdf`);
+                },
+
+                async exportarPDF() {
+                    const { jsPDF } = window.jspdf;
+                    const doc = new jsPDF();
+                    const ranking = this.getRanking();
+                    doc.setFillColor(30, 41, 59);
+                    doc.rect(0, 0, 210, 40, 'F');
+                    doc.setTextColor(255, 255, 255);
+                    doc.setFontSize(20);
+                    doc.setFont(undefined, 'bold');
+                    doc.text("REPORTE OFICIAL RALLY ACADÉMICO 2026", 15, 25);
+                    doc.autoTable({
+                        startY: 50,
+                        head: [['Posición', 'Equipo', 'Plantel', 'Turno', 'Puntaje Total']],
+                        body: ranking.map((eq, i) => [i + 1, eq.nombre, eq.plantel, eq.turno, eq.puntosAcademicos.toFixed(1)]),
+                        theme: 'striped',
+                        headStyles: { fillColor: [79, 70, 229] }
+                    });
+                    doc.save("Ranking_Final_Oficial_2026.pdf");
+                }
+            }
+        }
+    </script>
+</body>
+</html>
