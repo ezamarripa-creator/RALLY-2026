@@ -10,6 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <style>
         [x-cloak] { display: none !important; }
         .tab-active { border-bottom: 3px solid #facc15; color: #facc15; font-weight: bold; }
@@ -40,7 +41,7 @@
             <div class="flex flex-col md:flex-row justify-between items-end gap-4 border-b border-slate-200 pb-6">
                 <div>
                     <h2 class="text-4xl font-black text-slate-800 tracking-tight uppercase">Tabla de clasificación</h2>
-                    <p class="text-slate-500 font-medium italic">Datos sincronizados desde repositorio oficial</p>
+                    <p class="text-slate-500 font-medium italic">Datos sincronizados desde CSV oficial</p>
                 </div>
                 <div class="flex gap-3">
                     <button @click="exportarExcel()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-bold shadow-lg transition flex items-center gap-2">
@@ -154,27 +155,40 @@
                 view: 'dashboard',
                 search: '',
                 rawData: [],
-                GITHUB_DATA_URL: 'datos.json', // El archivo debe estar en la misma carpeta
+                GITHUB_DATA_URL: 'datos.csv', // Carga desde el archivo CSV en el mismo repo
 
                 async init() {
                     try {
-                        // Intento de carga desde el archivo JSON en el servidor/GitHub
-                        const response = await fetch(this.GITHUB_DATA_URL);
-                        if (!response.ok) throw new Error("Archivo no encontrado");
-                        
-                        this.rawData = await response.json();
-                        console.log("Datos cargados exitosamente desde JSON");
-                        
-                        // Opcional: Respaldar en localStorage por si el usuario pierde conexión después
-                        localStorage.setItem('rally_data_v2026', JSON.stringify(this.rawData));
+                        // Uso de PapaParse para descargar y convertir el CSV a JSON automáticamente
+                        Papa.parse(this.GITHUB_DATA_URL, {
+                            download: true,
+                            header: true,
+                            dynamicTyping: true,
+                            skipEmptyLines: true,
+                            complete: (results) => {
+                                this.rawData = results.data;
+                                console.log("Datos CSV cargados y parseados:", this.rawData);
+                                localStorage.setItem('rally_data_v2026', JSON.stringify(this.rawData));
+                                setTimeout(() => lucide.createIcons(), 100);
+                            },
+                            error: (error) => {
+                                console.error("Error con PapaParse:", error);
+                                this.cargarDesdeCache();
+                            }
+                        });
                         
                     } catch (error) {
-                        console.error("Error cargando JSON, buscando en almacenamiento local...", error);
-                        const saved = localStorage.getItem('rally_data_v2026');
-                        if (saved) this.rawData = JSON.parse(saved);
+                        console.error("Error en el proceso de carga:", error);
+                        this.cargarDesdeCache();
                     }
-                    
-                    setTimeout(() => lucide.createIcons(), 100);
+                },
+
+                cargarDesdeCache() {
+                    const saved = localStorage.getItem('rally_data_v2026');
+                    if (saved) {
+                        this.rawData = JSON.parse(saved);
+                        setTimeout(() => lucide.createIcons(), 100);
+                    }
                 },
 
                 limpiarDatos() {
@@ -187,8 +201,10 @@
                 getRanking() {
                     const equiposMap = {};
                     this.rawData.forEach(row => {
+                        // Soporta encabezados en minúsculas o Capitalizados
                         const id = row.id || row.ID;
                         if (!id) return;
+                        
                         if (!equiposMap[id]) {
                             equiposMap[id] = { 
                                 id, 
@@ -200,7 +216,7 @@
                                 detalles: [] 
                             };
                         }
-                        const pts = parseFloat(row.puntajeEstacion || row.Puntaje) || 0;
+                        const pts = parseFloat(row.puntos || row.Puntos || row.puntajeEstacion || row.Puntaje) || 0;
                         const est = row.estacion || row.Estacion;
                         
                         if (est) {
