@@ -1,6 +1,0 @@
-﻿id, nombre, plantel, Turno, estacion, puntajeEstacion
-1,Equipo 5,01 La Forestal,Matutino,"Estación 11: ""Lengua y Comunicación""",8
-2,Equipo 12,01 La Forestal,Vespertino,"Estación 11: ""Lengua y Comunicación""",10
-3,Equipo 3,09 Lomas,Matutino,"Estación 4: ""Ciencias Naturales""",9.5
-4,Equipo 1,07 Villa Ocampo,Matutino,"Estación 11: ""Lengua y Comunicación""",7.5
-5,Equipo 10,06 Peñón Blanco,Matutino,"Estación 11: ""Lengua y Comunicación""",9.4
