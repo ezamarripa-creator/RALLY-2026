@@ -1,0 +1,298 @@
+﻿id, nombre, plantel, Turno, estacion, puntajeEstacion
+10,Guerreros Pinioleros,10 Santiago Papasquiaro,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),100
+10,Guerreros Pinioleros,10 Santiago Papasquiaro,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),85
+10,Guerreros Pinioleros,10 Santiago Papasquiaro,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),30
+10,Guerreros Pinioleros,10 Santiago Papasquiaro,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),95
+10,Guerreros Pinioleros,10 Santiago Papasquiaro,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),95.23
+10,Guerreros Pinioleros,10 Santiago Papasquiaro,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),100
+10,Guerreros Pinioleros,10 Santiago Papasquiaro,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),90
+10,Guerreros Pinioleros,10 Santiago Papasquiaro,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),90
+11,Papas Kiali Papali,10 Santiago Papasquiaro,Vespertino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),100
+11,Papas Kiali Papali,10 Santiago Papasquiaro,Vespertino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),95
+11,Papas Kiali Papali,10 Santiago Papasquiaro,Vespertino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),58
+11,Papas Kiali Papali,10 Santiago Papasquiaro,Vespertino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),95
+11,Papas Kiali Papali,10 Santiago Papasquiaro,Vespertino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),90.47
+11,Papas Kiali Papali,10 Santiago Papasquiaro,Vespertino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),100
+11,Papas Kiali Papali,10 Santiago Papasquiaro,Vespertino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),90
+11,Papas Kiali Papali,10 Santiago Papasquiaro,Vespertino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),80
+12,BAILEYI´S O´DAM,11 Tepehuanes,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),45
+12,BAILEYI´S O´DAM,11 Tepehuanes,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),90
+12,BAILEYI´S O´DAM,11 Tepehuanes,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),53
+12,BAILEYI´S O´DAM,11 Tepehuanes,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),100
+12,BAILEYI´S O´DAM,11 Tepehuanes,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),71.43
+12,BAILEYI´S O´DAM,11 Tepehuanes,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),100
+12,BAILEYI´S O´DAM,11 Tepehuanes,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),90
+12,BAILEYI´S O´DAM,11 Tepehuanes,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),90
+13,Apex Ducks,12 Nuevo Ideal,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),80
+13,Apex Ducks,12 Nuevo Ideal,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),80
+13,Apex Ducks,12 Nuevo Ideal,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),48
+13,Apex Ducks,12 Nuevo Ideal,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),100
+13,Apex Ducks,12 Nuevo Ideal,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),90.47
+13,Apex Ducks,12 Nuevo Ideal,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),100
+13,Apex Ducks,12 Nuevo Ideal,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),100
+13,Apex Ducks,12 Nuevo Ideal,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),90
+14,Impacto 13 ,13 Tamazula,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),70
+14,Impacto 13 ,13 Tamazula,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),80
+14,Impacto 13 ,13 Tamazula,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),58
+14,Impacto 13 ,13 Tamazula,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),95
+14,Impacto 13 ,13 Tamazula,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),80.95
+14,Impacto 13 ,13 Tamazula,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),75
+14,Impacto 13 ,13 Tamazula,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),100
+14,Impacto 13 ,13 Tamazula,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),50
+15,LOS GUARDIANES DEL DESIERTO,14 San Juan De Guadalupe,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),55
+15,LOS GUARDIANES DEL DESIERTO,14 San Juan De Guadalupe,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),85
+15,LOS GUARDIANES DEL DESIERTO,14 San Juan De Guadalupe,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),48
+15,LOS GUARDIANES DEL DESIERTO,14 San Juan De Guadalupe,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),80
+15,LOS GUARDIANES DEL DESIERTO,14 San Juan De Guadalupe,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),71.43
+15,LOS GUARDIANES DEL DESIERTO,14 San Juan De Guadalupe,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),50
+15,LOS GUARDIANES DEL DESIERTO,14 San Juan De Guadalupe,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),100
+15,LOS GUARDIANES DEL DESIERTO,14 San Juan De Guadalupe,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),75
+16,MENTES NOCTURNAS ,15 San Miguel De Cruces,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),35
+16,MENTES NOCTURNAS ,15 San Miguel De Cruces,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),95
+16,MENTES NOCTURNAS ,15 San Miguel De Cruces,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),10
+16,MENTES NOCTURNAS ,15 San Miguel De Cruces,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),75
+16,MENTES NOCTURNAS ,15 San Miguel De Cruces,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),95.23
+16,MENTES NOCTURNAS ,15 San Miguel De Cruces,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),75
+16,MENTES NOCTURNAS ,15 San Miguel De Cruces,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),90
+16,MENTES NOCTURNAS ,15 San Miguel De Cruces,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),29
+17,"Coba 16, Mente y Talento ",16 Tayoltita,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),70
+17,"Coba 16, Mente y Talento ",16 Tayoltita,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),60
+17,"Coba 16, Mente y Talento ",16 Tayoltita,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),25
+17,"Coba 16, Mente y Talento ",16 Tayoltita,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),100
+17,"Coba 16, Mente y Talento ",16 Tayoltita,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),47.61
+17,"Coba 16, Mente y Talento ",16 Tayoltita,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),100
+17,"Coba 16, Mente y Talento ",16 Tayoltita,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),90
+17,"Coba 16, Mente y Talento ",16 Tayoltita,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),22
+18,Tribu Invencible Mezquital,17 Mezquital,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),65
+18,Tribu Invencible Mezquital,17 Mezquital,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),80
+18,Tribu Invencible Mezquital,17 Mezquital,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),43
+18,Tribu Invencible Mezquital,17 Mezquital,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),85
+18,Tribu Invencible Mezquital,17 Mezquital,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),95.23
+18,Tribu Invencible Mezquital,17 Mezquital,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),50
+18,Tribu Invencible Mezquital,17 Mezquital,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),90
+18,Tribu Invencible Mezquital,17 Mezquital,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),90
+19,O’dam Tasai,18 Antonio Amaro,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),85
+19,O’dam Tasai,18 Antonio Amaro,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),95
+19,O’dam Tasai,18 Antonio Amaro,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),13
+19,O’dam Tasai,18 Antonio Amaro,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),95
+19,O’dam Tasai,18 Antonio Amaro,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),90.47
+19,O’dam Tasai,18 Antonio Amaro,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),100
+19,O’dam Tasai,18 Antonio Amaro,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),80
+19,O’dam Tasai,18 Antonio Amaro,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),75
+1,ALQUIMISTAS ,01 La Forestal,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),90
+1,ALQUIMISTAS ,01 La Forestal,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),95
+1,ALQUIMISTAS ,01 La Forestal,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),30
+1,ALQUIMISTAS ,01 La Forestal,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),73
+1,ALQUIMISTAS ,01 La Forestal,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),95.23
+1,ALQUIMISTAS ,01 La Forestal,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),50
+1,ALQUIMISTAS ,01 La Forestal,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),100
+1,ALQUIMISTAS ,01 La Forestal,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),90
+20,JILGUEROS DEL ARROYO,19 Santa Clara,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),80
+20,JILGUEROS DEL ARROYO,19 Santa Clara,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),90
+20,JILGUEROS DEL ARROYO,19 Santa Clara,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),30
+20,JILGUEROS DEL ARROYO,19 Santa Clara,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),78
+20,JILGUEROS DEL ARROYO,19 Santa Clara,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),85.71
+20,JILGUEROS DEL ARROYO,19 Santa Clara,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),50
+20,JILGUEROS DEL ARROYO,19 Santa Clara,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),100
+20,JILGUEROS DEL ARROYO,19 Santa Clara,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),98
+21,Guerreros ,20 Guadalupe Victoria,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),40
+21,Guerreros ,20 Guadalupe Victoria,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),95
+21,Guerreros ,20 Guadalupe Victoria,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),53
+21,Guerreros ,20 Guadalupe Victoria,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),100
+21,Guerreros ,20 Guadalupe Victoria,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),95.23
+21,Guerreros ,20 Guadalupe Victoria,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),100
+21,Guerreros ,20 Guadalupe Victoria,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),100
+21,Guerreros ,20 Guadalupe Victoria,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),65
+22,Corceles de fuego ,22 Santa Ma. Del Oro,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),60
+22,Corceles de fuego ,22 Santa Ma. Del Oro,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),90
+22,Corceles de fuego ,22 Santa Ma. Del Oro,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),15
+22,Corceles de fuego ,22 Santa Ma. Del Oro,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),95
+22,Corceles de fuego ,22 Santa Ma. Del Oro,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),80.95
+22,Corceles de fuego ,22 Santa Ma. Del Oro,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),75
+22,Corceles de fuego ,22 Santa Ma. Del Oro,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),90
+22,Corceles de fuego ,22 Santa Ma. Del Oro,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),90
+23,Tusas mineras,23 Coneto de Comonfort,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),80
+23,Tusas mineras,23 Coneto de Comonfort,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),85
+23,Tusas mineras,23 Coneto de Comonfort,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),35
+23,Tusas mineras,23 Coneto de Comonfort,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),75
+23,Tusas mineras,23 Coneto de Comonfort,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),66.66
+23,Tusas mineras,23 Coneto de Comonfort,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),50
+23,Tusas mineras,23 Coneto de Comonfort,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),80
+23,Tusas mineras,23 Coneto de Comonfort,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),49
+24,Coyotes,24 Simón Bolívar,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),70
+24,Coyotes,24 Simón Bolívar,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),85
+24,Coyotes,24 Simón Bolívar,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),25
+24,Coyotes,24 Simón Bolívar,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),88
+24,Coyotes,24 Simón Bolívar,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),80.95
+24,Coyotes,24 Simón Bolívar,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),50
+24,Coyotes,24 Simón Bolívar,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),100
+24,Coyotes,24 Simón Bolívar,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),80
+25,ESCUADRÓN 27,27 Vicente Guerrero,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),75
+25,ESCUADRÓN 27,27 Vicente Guerrero,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),95
+25,ESCUADRÓN 27,27 Vicente Guerrero,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),20
+25,ESCUADRÓN 27,27 Vicente Guerrero,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),92
+25,ESCUADRÓN 27,27 Vicente Guerrero,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),90.47
+25,ESCUADRÓN 27,27 Vicente Guerrero,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),100
+25,ESCUADRÓN 27,27 Vicente Guerrero,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),100
+25,ESCUADRÓN 27,27 Vicente Guerrero,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),86
+26,TUKURA,28 El Salto,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),100
+26,TUKURA,28 El Salto,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),95
+26,TUKURA,28 El Salto,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),65
+26,TUKURA,28 El Salto,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),83
+26,TUKURA,28 El Salto,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),85.72
+26,TUKURA,28 El Salto,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),50
+26,TUKURA,28 El Salto,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),100
+26,TUKURA,28 El Salto,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),90
+27,Furia Manzanera ,29 Canatlán,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),80
+27,Furia Manzanera ,29 Canatlán,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),90
+27,Furia Manzanera ,29 Canatlán,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),58
+27,Furia Manzanera ,29 Canatlán,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),83
+27,Furia Manzanera ,29 Canatlán,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),90.47
+27,Furia Manzanera ,29 Canatlán,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),50
+27,Furia Manzanera ,29 Canatlán,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),100
+27,Furia Manzanera ,29 Canatlán,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),80
+28,VIGIAS DEL SABER ,31 La Ciudad,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),60
+28,VIGIAS DEL SABER ,31 La Ciudad,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),85
+28,VIGIAS DEL SABER ,31 La Ciudad,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),5
+28,VIGIAS DEL SABER ,31 La Ciudad,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),85
+28,VIGIAS DEL SABER ,31 La Ciudad,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),85.71
+28,VIGIAS DEL SABER ,31 La Ciudad,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),35
+28,VIGIAS DEL SABER ,31 La Ciudad,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),100
+28,VIGIAS DEL SABER ,31 La Ciudad,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),90
+29,LOBOS,32 Juana Villalobos,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),95
+29,LOBOS,32 Juana Villalobos,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),90
+29,LOBOS,32 Juana Villalobos,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),18
+29,LOBOS,32 Juana Villalobos,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),75
+29,LOBOS,32 Juana Villalobos,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),85.71
+29,LOBOS,32 Juana Villalobos,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),100
+29,LOBOS,32 Juana Villalobos,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),100
+29,LOBOS,32 Juana Villalobos,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),59
+2,Guardianes del Jardín ,02 Lerdo,Vespertino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),80
+2,Guardianes del Jardín ,02 Lerdo,Vespertino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),95
+2,Guardianes del Jardín ,02 Lerdo,Vespertino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),13
+2,Guardianes del Jardín ,02 Lerdo,Vespertino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),81
+2,Guardianes del Jardín ,02 Lerdo,Vespertino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),90.47
+2,Guardianes del Jardín ,02 Lerdo,Vespertino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),50
+2,Guardianes del Jardín ,02 Lerdo,Vespertino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),90
+2,Guardianes del Jardín ,02 Lerdo,Vespertino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),70
+30,Halcones,32 Juana Villalobos,Vespertino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),75
+30,Halcones,32 Juana Villalobos,Vespertino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),70
+30,Halcones,32 Juana Villalobos,Vespertino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),0
+30,Halcones,32 Juana Villalobos,Vespertino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),80
+30,Halcones,32 Juana Villalobos,Vespertino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),95.23
+30,Halcones,32 Juana Villalobos,Vespertino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),50
+30,Halcones,32 Juana Villalobos,Vespertino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),90
+30,Halcones,32 Juana Villalobos,Vespertino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),71
+31,Titanes,33 Pino Suárez,vespertino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),50
+31,Titanes,33 Pino Suárez,vespertino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),95
+31,Titanes,33 Pino Suárez,vespertino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),35
+31,Titanes,33 Pino Suárez,vespertino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),93
+31,Titanes,33 Pino Suárez,vespertino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),85.71
+31,Titanes,33 Pino Suárez,vespertino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),50
+31,Titanes,33 Pino Suárez,vespertino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),100
+31,Titanes,33 Pino Suárez,vespertino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),47
+32,SOMOS GIGANTES VILLAS,34 Villas Del Guadiana,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),100
+32,SOMOS GIGANTES VILLAS,34 Villas Del Guadiana,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),95
+32,SOMOS GIGANTES VILLAS,34 Villas Del Guadiana,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),0
+32,SOMOS GIGANTES VILLAS,34 Villas Del Guadiana,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),90
+32,SOMOS GIGANTES VILLAS,34 Villas Del Guadiana,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),66.66
+32,SOMOS GIGANTES VILLAS,34 Villas Del Guadiana,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),50
+32,SOMOS GIGANTES VILLAS,34 Villas Del Guadiana,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),100
+32,SOMOS GIGANTES VILLAS,34 Villas Del Guadiana,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),67
+33,la variable rebelde ,35 Gómez Palacio,Vespertino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),45
+33,la variable rebelde ,35 Gómez Palacio,Vespertino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),70
+33,la variable rebelde ,35 Gómez Palacio,Vespertino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),5
+33,la variable rebelde ,35 Gómez Palacio,Vespertino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),90
+33,la variable rebelde ,35 Gómez Palacio,Vespertino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),95.23
+33,la variable rebelde ,35 Gómez Palacio,Vespertino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),50
+33,la variable rebelde ,35 Gómez Palacio,Vespertino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),80
+33,la variable rebelde ,35 Gómez Palacio,Vespertino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),26
+3,COBAED MADERO,03 Fco. I. Madero,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),100
+3,COBAED MADERO,03 Fco. I. Madero,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),75
+3,COBAED MADERO,03 Fco. I. Madero,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),30
+3,COBAED MADERO,03 Fco. I. Madero,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),95
+3,COBAED MADERO,03 Fco. I. Madero,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),52.8
+3,COBAED MADERO,03 Fco. I. Madero,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),75
+3,COBAED MADERO,03 Fco. I. Madero,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),100
+3,COBAED MADERO,03 Fco. I. Madero,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),76
+4,En proceso,05 Bermejillo,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),95
+4,En proceso,05 Bermejillo,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),85
+4,En proceso,05 Bermejillo,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),15
+4,En proceso,05 Bermejillo,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),73
+4,En proceso,05 Bermejillo,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),80.95
+4,En proceso,05 Bermejillo,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),50
+4,En proceso,05 Bermejillo,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),80
+4,En proceso,05 Bermejillo,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),90
+5,ELITE DEL INTELECTO,06 Peñón Blanco,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),65
+5,ELITE DEL INTELECTO,06 Peñón Blanco,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),90
+5,ELITE DEL INTELECTO,06 Peñón Blanco,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),25
+5,ELITE DEL INTELECTO,06 Peñón Blanco,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),95
+5,ELITE DEL INTELECTO,06 Peñón Blanco,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),95.23
+5,ELITE DEL INTELECTO,06 Peñón Blanco,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),10
+5,ELITE DEL INTELECTO,06 Peñón Blanco,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),100
+5,ELITE DEL INTELECTO,06 Peñón Blanco,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),60
+6,Campobellos en movimiento,07 Villa Ocampo,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),80
+6,Campobellos en movimiento,07 Villa Ocampo,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),75
+6,Campobellos en movimiento,07 Villa Ocampo,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),10
+6,Campobellos en movimiento,07 Villa Ocampo,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),88
+6,Campobellos en movimiento,07 Villa Ocampo,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),80.95
+6,Campobellos en movimiento,07 Villa Ocampo,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),50
+6,Campobellos en movimiento,07 Villa Ocampo,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),90
+7,Escuadron respeto y victoria,08 Nazas,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),70
+7,Escuadron respeto y victoria,08 Nazas,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),65
+7,Escuadron respeto y victoria,08 Nazas,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),45
+7,Escuadron respeto y victoria,08 Nazas,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),90
+7,Escuadron respeto y victoria,08 Nazas,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),85.71
+7,Escuadron respeto y victoria,08 Nazas,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),75
+7,Escuadron respeto y victoria,08 Nazas,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),90
+7,Escuadron respeto y victoria,08 Nazas,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),95
+7,Escuadron respeto y victoria,08 Nazas,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),70
+8,Pumas 09,09 Lomas,Matutino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),35
+8,Pumas 09,09 Lomas,Matutino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),75
+8,Pumas 09,09 Lomas,Matutino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),18
+8,Pumas 09,09 Lomas,Matutino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),75
+8,Pumas 09,09 Lomas,Matutino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),80.95
+8,Pumas 09,09 Lomas,Matutino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),100
+8,Pumas 09,09 Lomas,Matutino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),90
+8,Pumas 09,09 Lomas,Matutino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),60
+9,CORCELES DEL SABER  ,09 Lomas,Vespertino,ESTACIÓN 1: PLAZA DE ARMAS (Lety López),35
+9,CORCELES DEL SABER  ,09 Lomas,Vespertino,ESTACIÓN 2: PARROQUIA SANTIAGO APÓSTOL (Karina Villarreal),80
+9,CORCELES DEL SABER  ,09 Lomas,Vespertino,ESTACIÓN 3: SECUNDARIA JOSÉ RAMÓN VALDEZ (Vero Aragón),13
+9,CORCELES DEL SABER  ,09 Lomas,Vespertino,ESTACIÓN 4: JARDÍN JUÁREZ (Yesenia Gallardo),75
+9,CORCELES DEL SABER  ,09 Lomas,Vespertino,ESTACIÓN 5: MONUMENTO A LA BANDERA (Ciencias Naturales),90.47
+9,CORCELES DEL SABER  ,09 Lomas,Vespertino,ESTACIÓN 6: CALZADA JOSÉ RAMÓN VALDEZ (ITSSP),0
+9,CORCELES DEL SABER  ,09 Lomas,Vespertino,ESTACIÓN 7: SEGUNDA CALZADA (Sonia García),90
+9,CORCELES DEL SABER  ,09 Lomas,Vespertino,ESTACIÓN 8: ESCUELA SECUNDARIA TÉCNICA NO. 32 (J. Ignacio Vargas),41
+10,Guerreros Pinioleros,10 Santiago Papasquiaro,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),90
+11,Papas Kiali Papali,10 Santiago Papasquiaro,Vespertino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),90
+12,BAILEYI´S O´DAM,11 Tepehuanes,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),90
+12,BAILEYI´S O´DAM,11 Tepehuanes,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),70
+12,BAILEYI´S O´DAM,11 Tepehuanes,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),70
+14,Impacto 13 ,13 Tamazula,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),70
+15,LOS GUARDIANES DEL DESIERTO,14 San Juan De Guadalupe,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),100
+17,"Coba 16, Mente y Talento ",16 Tayoltita,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),60
+18,Tribu Invencible Mezquital,17 Mezquital,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),70
+19,O’dam Tasai,18 Antonio Amaro,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),100
+1,ALQUIMISTAS ,01 La Forestal,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),100
+20,JILGUEROS DEL ARROYO,19 Santa Clara,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),90
+20,JILGUEROS DEL ARROYO,19 Santa Clara,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),90
+22,Corceles de fuego ,22 Santa Ma. Del Oro,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),90
+23,Tusas mineras,23 Coneto de Comonfort,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),90
+24,Coyotes,24 Simón Bolívar,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),100
+25,ESCUADRÓN 27,27 Vicente Guerrero,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),80
+26,TUKURA,28 El Salto,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),90
+27,Furia Manzanera ,29 Canatlán,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),80
+28,VIGIAS DEL SABER ,31 La Ciudad,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),100
+29,LOBOS,32 Juana Villalobos,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),100
+2,Guardianes del Jardín ,02 Lerdo,Vespertino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),100
+30,Halcones,32 Juana Villalobos,Vespertino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),60
+31,Titanes,33 Pino Suárez,vespertino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),90
+32,SOMOS GIGANTES VILLAS,34 Villas Del Guadiana,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),100
+33,la variable rebelde ,35 Gómez Palacio,Vespertino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),50
+3,COBAED MADERO,03 Fco. I. Madero,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),100
+4,En proceso,05 Bermejillo,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),100
+5,ELITE DEL INTELECTO,06 Peñón Blanco,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),90
+7,Escuadron respeto y victoria,08 Nazas,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),70
+7,Escuadron respeto y victoria,08 Nazas,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),90
+8,Pumas 09,09 Lomas,Matutino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),90
+9,CORCELES DEL SABER  ,09 Lomas,Vespertino,ESTACIÓN 9: MONUMENTO DE LA CRUZ (Fátima Covarrubias),100
