@@ -93,8 +93,8 @@
             <div class="bg-emerald-900 p-8 rounded-[2.5rem] shadow-2xl">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                     <div class="text-white">
-                        <h2 class="text-3xl font-black uppercase tracking-tighter">Resultados por Estación</h2>
-                        <p class="text-emerald-200 text-sm italic">Selecciona una estación para ver el desempeño de los equipos</p>
+                        <h2 class="text-3xl font-black uppercase tracking-tighter">Análisis por Estación</h2>
+                        <p class="text-emerald-200 text-sm italic">Filtra y genera reportes grupales por actividad</p>
                     </div>
                     <div class="w-full md:w-80">
                         <label class="text-[10px] font-black text-emerald-400 uppercase mb-2 block">Seleccionar Actividad:</label>
@@ -111,15 +111,34 @@
             <div class="space-y-10">
                 <template x-for="est in filteredEstacionesDisplay" :key="est.nombre">
                     <div class="bg-white rounded-[2rem] shadow-lg border border-slate-200 overflow-hidden card-zoom">
-                        <div class="bg-slate-900 p-6 flex justify-between items-center text-white">
+                        <div class="bg-slate-900 p-8 flex flex-col md:flex-row justify-between items-center text-white gap-6">
                             <div>
-                                <h3 class="text-2xl font-black uppercase italic" x-text="est.nombre"></h3>
-                                <div class="flex gap-4 mt-1">
-                                    <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest" x-text="'Promedio: ' + est.promedio"></span>
-                                    <span class="text-[10px] font-bold text-indigo-300 uppercase tracking-widest" x-text="'Máximo: ' + est.maximo"></span>
+                                <h3 class="text-3xl font-black uppercase italic text-yellow-400" x-text="est.nombre"></h3>
+                                <div class="flex flex-wrap gap-6 mt-3">
+                                    <div>
+                                        <p class="text-[10px] font-bold text-slate-400 uppercase">Promedio</p>
+                                        <p class="text-2xl font-black text-white" x-text="est.promedio"></p>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] font-bold text-slate-400 uppercase">Puntaje Máximo</p>
+                                        <p class="text-2xl font-black text-emerald-400" x-text="est.maximo"></p>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] font-bold text-slate-400 uppercase">Sumatoria Total</p>
+                                        <p class="text-2xl font-black text-indigo-400" x-text="est.suma.toFixed(1)"></p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="bg-emerald-500 text-slate-900 px-4 py-1 rounded-full font-black text-xs uppercase" x-text="est.cantidad + ' equipos'"></div>
+                            <div class="flex items-center gap-3">
+                                <div class="bg-slate-800 border border-slate-700 px-6 py-3 rounded-2xl text-center">
+                                    <p class="text-[10px] font-black text-slate-400 uppercase">Total Equipos</p>
+                                    <p class="text-xl font-black" x-text="est.cantidad"></p>
+                                </div>
+                                <button @click="exportarReporteEstacion(est)" class="bg-indigo-600 hover:bg-indigo-500 text-white p-4 rounded-2xl shadow-xl transition-all flex items-center gap-2 group">
+                                    <i data-lucide="printer" class="w-6 h-6 group-hover:scale-110 transition"></i>
+                                    <span class="font-black text-xs uppercase">Imprimir Estación</span>
+                                </button>
+                            </div>
                         </div>
 
                         <div class="overflow-x-auto">
@@ -128,8 +147,7 @@
                                     <tr class="text-[10px] uppercase tracking-widest text-slate-400 bg-slate-50 border-b">
                                         <th class="px-6 py-4 text-left">Equipo</th>
                                         <th class="px-6 py-4 text-left">Plantel / Turno</th>
-                                        <th class="px-6 py-4 text-center">Puntaje</th>
-                                        <th class="px-6 py-4 text-center">Imprimir</th>
+                                        <th class="px-6 py-4 text-center">Puntaje Obtenido</th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-100">
@@ -138,12 +156,7 @@
                                             <td class="px-6 py-4 font-black text-slate-800 uppercase text-sm" x-text="item.nombre"></td>
                                             <td class="px-6 py-4 text-xs font-bold text-slate-400 uppercase" x-text="`${item.plantel} | ${item.turno}`"></td>
                                             <td class="px-6 py-4 text-center">
-                                                <span class="text-lg font-black text-indigo-600" x-text="item.puntos"></span>
-                                            </td>
-                                            <td class="px-6 py-4 text-center">
-                                                <button @click="exportarReporteIndividual(buscarEquipoPorId(item.id))" class="p-2 bg-slate-100 hover:bg-indigo-600 hover:text-white rounded-lg transition-all">
-                                                    <i data-lucide="printer" class="w-4 h-4"></i>
-                                                </button>
+                                                <span class="bg-indigo-50 text-indigo-700 px-4 py-1 rounded-full font-black text-base" x-text="item.puntos"></span>
                                             </td>
                                         </tr>
                                     </template>
@@ -301,7 +314,6 @@
                     setTimeout(() => lucide.createIcons(), 50);
                 },
 
-                // Lógica de filtrado para mostrar estaciones
                 get filteredEstacionesDisplay() {
                     if (this.selectedEstacion === '') return this.estacionesData;
                     return this.estacionesData.filter(e => e.nombre === this.selectedEstacion);
@@ -318,10 +330,6 @@
                             puntos: r.puntajeEstacion
                         }))
                         .sort((a, b) => b.puntos - a.puntos);
-                },
-
-                buscarEquipoPorId(id) {
-                    return this.rankingData.find(e => e.id === id);
                 },
 
                 get filteredRanking() {
@@ -376,6 +384,29 @@
                         foot: [['TOTAL', eq.puntosAcademicos.toFixed(1)]]
                     });
                     doc.save(`Reporte_${eq.nombre}.pdf`);
+                },
+
+                exportarReporteEstacion(est) {
+                    const { jsPDF } = window.jspdf;
+                    const doc = new jsPDF();
+                    const equipos = this.obtenerEquiposDeEstacion(est.nombre);
+                    
+                    doc.setFontSize(18);
+                    doc.text(`REPORTE DE ESTACIÓN: ${est.nombre.toUpperCase()}`, 15, 20);
+                    
+                    doc.setFontSize(10);
+                    doc.text(`Promedio: ${est.promedio} | Máximo: ${est.maximo} | Total Equipos: ${est.cantidad}`, 15, 28);
+                    doc.text(`Sumatoria Total de la Estación: ${est.suma.toFixed(1)}`, 15, 33);
+
+                    doc.autoTable({
+                        startY: 40,
+                        head: [['Equipo', 'Plantel', 'Turno', 'Puntaje']],
+                        body: equipos.map(e => [e.nombre, e.plantel, e.turno, e.puntos]),
+                        theme: 'striped',
+                        headStyles: { fillStyle: [30, 41, 59] }
+                    });
+                    
+                    doc.save(`Reporte_Estacion_${est.nombre}.pdf`);
                 }
             }
         }
