@@ -29,7 +29,7 @@
             </div>
             <div class="flex gap-8 items-center text-xs font-bold uppercase tracking-widest">
                 <button @click="view = 'dashboard'" :class="view === 'dashboard' ? 'tab-active' : ''" class="hover:text-yellow-400 transition py-2">Dashboard</button>
-                <button @click="view = 'estaciones'" :class="view === 'estaciones' ? 'tab-active' : ''" class="hover:text-yellow-400 transition py-2 text-emerald-400">Detalle por Estación</button>
+                <button @click="view = 'estaciones'" :class="view === 'estaciones' ? 'tab-active' : ''" class="hover:text-yellow-400 transition py-2 text-emerald-400">Resultados Estaciones</button>
                 <button @click="view = 'equipos'" :class="view === 'equipos' ? 'tab-active' : ''" class="hover:text-yellow-400 transition py-2 text-indigo-300">Gestión y Filtros</button>
             </div>
         </div>
@@ -91,58 +91,58 @@
 
         <section x-show="view === 'estaciones'" x-cloak class="space-y-8">
             <div class="bg-emerald-900 p-8 rounded-[2.5rem] shadow-2xl">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-6">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                     <div class="text-white">
-                        <h2 class="text-3xl font-black uppercase tracking-tighter">Análisis por Estaciones</h2>
-                        <p class="text-emerald-200 text-sm italic">Resultados detallados por actividad</p>
+                        <h2 class="text-3xl font-black uppercase tracking-tighter">Resultados por Estación</h2>
+                        <p class="text-emerald-200 text-sm italic">Selecciona una estación para ver el desempeño de los equipos</p>
                     </div>
-                    <div class="relative w-full md:w-96">
-                        <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 text-emerald-400 w-5 h-5"></i>
-                        <input 
-                            type="text" 
-                            x-model="search" 
-                            placeholder="Buscar equipo o plantel en estaciones..." 
-                            class="w-full bg-emerald-800/50 border border-emerald-700 text-white p-3 pl-12 rounded-xl focus:ring-2 focus:ring-yellow-400 transition placeholder:text-emerald-400/50"
-                        >
+                    <div class="w-full md:w-80">
+                        <label class="text-[10px] font-black text-emerald-400 uppercase mb-2 block">Seleccionar Actividad:</label>
+                        <select x-model="selectedEstacion" class="w-full bg-emerald-800 border-none text-white p-3 rounded-xl focus:ring-2 focus:ring-yellow-400 transition cursor-pointer font-bold">
+                            <option value="">-- Ver todas las estaciones --</option>
+                            <template x-for="est in estacionesData" :key="est.nombre">
+                                <option :value="est.nombre" x-text="est.nombre"></option>
+                            </template>
+                        </select>
                     </div>
                 </div>
             </div>
 
-            <div class="space-y-12">
-                <template x-for="est in estacionesData" :key="est.nombre">
-                    <div class="bg-white rounded-[2rem] shadow-lg border border-slate-200 overflow-hidden">
-                        <div class="bg-slate-50 p-6 border-b border-slate-100 flex justify-between items-center">
+            <div class="space-y-10">
+                <template x-for="est in filteredEstacionesDisplay" :key="est.nombre">
+                    <div class="bg-white rounded-[2rem] shadow-lg border border-slate-200 overflow-hidden card-zoom">
+                        <div class="bg-slate-900 p-6 flex justify-between items-center text-white">
                             <div>
-                                <h3 class="text-2xl font-black text-slate-800 uppercase italic" x-text="est.nombre"></h3>
-                                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Listado de Puntajes Obtenidos</p>
+                                <h3 class="text-2xl font-black uppercase italic" x-text="est.nombre"></h3>
+                                <div class="flex gap-4 mt-1">
+                                    <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest" x-text="'Promedio: ' + est.promedio"></span>
+                                    <span class="text-[10px] font-bold text-indigo-300 uppercase tracking-widest" x-text="'Máximo: ' + est.maximo"></span>
+                                </div>
                             </div>
-                            <div class="text-right">
-                                <span class="block text-2xl font-black text-indigo-600" x-text="est.cantidad"></span>
-                                <span class="text-[10px] font-black text-slate-400 uppercase">Equipos</span>
-                            </div>
+                            <div class="bg-emerald-500 text-slate-900 px-4 py-1 rounded-full font-black text-xs uppercase" x-text="est.cantidad + ' equipos'"></div>
                         </div>
 
                         <div class="overflow-x-auto">
                             <table class="w-full">
                                 <thead>
-                                    <tr class="text-[10px] uppercase tracking-widest text-slate-400 bg-slate-50/50">
+                                    <tr class="text-[10px] uppercase tracking-widest text-slate-400 bg-slate-50 border-b">
                                         <th class="px-6 py-4 text-left">Equipo</th>
                                         <th class="px-6 py-4 text-left">Plantel / Turno</th>
-                                        <th class="px-6 py-4 text-center text-slate-900">Puntaje</th>
-                                        <th class="px-6 py-4 text-center">Acción</th>
+                                        <th class="px-6 py-4 text-center">Puntaje</th>
+                                        <th class="px-6 py-4 text-center">Imprimir</th>
                                     </tr>
                                 </thead>
-                                <tbody class="divide-y divide-slate-50">
-                                    <template x-for="item in filtrarEquiposPorEstacion(est.nombre)" :key="item.id">
-                                        <tr class="hover:bg-slate-50 transition-colors">
-                                            <td class="px-6 py-4 font-black text-slate-700 uppercase text-sm" x-text="item.nombre"></td>
-                                            <td class="px-6 py-4 text-xs font-bold text-slate-400 uppercase" x-text="`${item.plantel} - ${item.turno}`"></td>
+                                <tbody class="divide-y divide-slate-100">
+                                    <template x-for="item in obtenerEquiposDeEstacion(est.nombre)" :key="item.id">
+                                        <tr class="hover:bg-slate-50/80 transition-colors">
+                                            <td class="px-6 py-4 font-black text-slate-800 uppercase text-sm" x-text="item.nombre"></td>
+                                            <td class="px-6 py-4 text-xs font-bold text-slate-400 uppercase" x-text="`${item.plantel} | ${item.turno}`"></td>
                                             <td class="px-6 py-4 text-center">
-                                                <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full font-black text-sm" x-text="item.puntos"></span>
+                                                <span class="text-lg font-black text-indigo-600" x-text="item.puntos"></span>
                                             </td>
                                             <td class="px-6 py-4 text-center">
-                                                <button @click="exportarReporteIndividual(obtenerEquipoCompleto(item.id))" class="text-slate-400 hover:text-indigo-600 transition">
-                                                    <i data-lucide="printer" class="w-5 h-5 mx-auto"></i>
+                                                <button @click="exportarReporteIndividual(buscarEquipoPorId(item.id))" class="p-2 bg-slate-100 hover:bg-indigo-600 hover:text-white rounded-lg transition-all">
+                                                    <i data-lucide="printer" class="w-4 h-4"></i>
                                                 </button>
                                             </td>
                                         </tr>
@@ -220,6 +220,7 @@
             return {
                 view: 'dashboard',
                 search: '',
+                selectedEstacion: '',
                 rawData: [],
                 rankingData: [],
                 estacionesData: [],
@@ -291,31 +292,35 @@
                     });
 
                     this.rankingData = Object.values(equiposMap).sort((a, b) => b.puntosAcademicos - a.puntosAcademicos);
-                    this.estacionesData = Object.values(estMap).sort((a, b) => a.nombre.localeCompare(b.nombre));
+                    
+                    this.estacionesData = Object.values(estMap).map(e => ({
+                        ...e,
+                        promedio: (e.suma / e.cantidad).toFixed(1)
+                    })).sort((a, b) => a.nombre.localeCompare(b.nombre));
                     
                     setTimeout(() => lucide.createIcons(), 50);
                 },
 
-                // Lógica de filtrado para las tablas en la sección Estaciones
-                filtrarEquiposPorEstacion(nombreEstacion) {
-                    const query = this.search.toLowerCase();
-                    return this.rawData
-                        .filter(row => row.estacion === nombreEstacion)
-                        .filter(row => 
-                            row.nombre?.toLowerCase().includes(query) || 
-                            row.plantel?.toLowerCase().includes(query)
-                        )
-                        .map(row => ({
-                            id: row.id,
-                            nombre: row.nombre,
-                            plantel: row.plantel,
-                            turno: row.turno,
-                            puntos: row.puntajeEstacion
-                        }));
+                // Lógica de filtrado para mostrar estaciones
+                get filteredEstacionesDisplay() {
+                    if (this.selectedEstacion === '') return this.estacionesData;
+                    return this.estacionesData.filter(e => e.nombre === this.selectedEstacion);
                 },
 
-                // Helper para encontrar el objeto completo del equipo para el PDF
-                obtenerEquipoCompleto(id) {
+                obtenerEquiposDeEstacion(nombreEstacion) {
+                    return this.rawData
+                        .filter(r => r.estacion === nombreEstacion)
+                        .map(r => ({
+                            id: r.id,
+                            nombre: r.nombre,
+                            plantel: r.plantel,
+                            turno: r.turno,
+                            puntos: r.puntajeEstacion
+                        }))
+                        .sort((a, b) => b.puntos - a.puntos);
+                },
+
+                buscarEquipoPorId(id) {
                     return this.rankingData.find(e => e.id === id);
                 },
 
@@ -357,7 +362,7 @@
                 },
 
                 exportarReporteIndividual(eq) {
-                    if(!eq) return;
+                    if (!eq) return;
                     const { jsPDF } = window.jspdf;
                     const doc = new jsPDF();
                     doc.setFontSize(22);
