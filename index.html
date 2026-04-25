@@ -29,6 +29,7 @@
             </div>
             <div class="flex gap-8 items-center text-xs font-bold uppercase tracking-widest">
                 <button @click="view = 'dashboard'" :class="view === 'dashboard' ? 'tab-active' : ''" class="hover:text-yellow-400 transition py-2">Dashboard</button>
+                <button @click="view = 'estaciones'" :class="view === 'estaciones' ? 'tab-active' : ''" class="hover:text-yellow-400 transition py-2 text-emerald-400">Estaciones</button>
                 <button @click="view = 'equipos'" :class="view === 'equipos' ? 'tab-active' : ''" class="hover:text-yellow-400 transition py-2 text-indigo-300">Gestión y Filtros</button>
             </div>
         </div>
@@ -85,6 +86,59 @@
                         </template>
                     </tbody>
                 </table>
+            </div>
+        </section>
+
+        <section x-show="view === 'estaciones'" x-cloak class="space-y-8">
+            <div class="bg-emerald-900 p-8 rounded-[2.5rem] shadow-2xl">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="text-white">
+                        <h2 class="text-3xl font-black uppercase tracking-tighter">Análisis por Estaciones</h2>
+                        <p class="text-emerald-200 text-sm italic">Resumen de desempeño por actividad académica</p>
+                    </div>
+                    <div class="bg-emerald-800/50 p-4 rounded-2xl border border-emerald-700">
+                        <p class="text-[10px] text-emerald-300 uppercase font-black">Total Estaciones Activas</p>
+                        <p class="text-2xl font-black text-white" x-text="estacionesData.length"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <template x-for="est in estacionesData" :key="est.nombre">
+                    <div class="bg-white p-6 rounded-[2rem] shadow-lg border border-slate-100 flex flex-col card-zoom">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-black text-slate-800 uppercase italic leading-none mb-1" x-text="est.nombre"></h3>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Estadísticas de Estación</p>
+                            </div>
+                            <div class="bg-emerald-100 text-emerald-700 p-2 rounded-lg">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="flex-grow space-y-4 mb-6 border-t pt-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-slate-500 font-bold uppercase">Equipos que pasaron:</span>
+                                <span class="text-lg font-black text-slate-800" x-text="est.cantidad"></span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-slate-500 font-bold uppercase">Puntaje Máximo:</span>
+                                <span class="text-lg font-black text-emerald-600" x-text="est.maximo"></span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-slate-500 font-bold uppercase">Promedio:</span>
+                                <span class="text-lg font-black text-indigo-600" x-text="est.promedio"></span>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900 text-white p-4 rounded-2xl text-center">
+                            <div class="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden mb-2">
+                                <div class="bg-emerald-400 h-full" :style="`width: ${(est.cantidad / rankingData.length * 100)}%`"></div>
+                            </div>
+                            <p class="text-[9px] uppercase font-bold text-slate-400">Participación Global</p>
+                        </div>
+                    </div>
+                </template>
             </div>
         </section>
 
@@ -160,6 +214,7 @@
                 search: '',
                 rawData: [],
                 rankingData: [],
+                estacionesData: [],
 
                 init() {
                     const saved = localStorage.getItem('rally_data_v2026');
@@ -202,19 +257,41 @@
 
                 actualizarRanking() {
                     const equiposMap = {};
+                    const estMap = {};
+
                     this.rawData.forEach(row => {
                         const id = row.id;
                         if (!id) return;
+                        
+                        // Lógica Equipos
                         if (!equiposMap[id]) {
                             equiposMap[id] = { id, nombre: row.nombre, plantel: row.plantel, turno: row.turno, numEstaciones: 0, puntosAcademicos: 0, detalles: [] };
                         }
+                        
+                        // Lógica Estaciones
                         if (row.estacion) {
+                            const eName = row.estacion;
+                            if (!estMap[eName]) {
+                                estMap[eName] = { nombre: eName, cantidad: 0, suma: 0, maximo: 0 };
+                            }
+                            estMap[eName].cantidad++;
+                            estMap[eName].suma += row.puntajeEstacion;
+                            if(row.puntajeEstacion > estMap[eName].maximo) estMap[eName].maximo = row.puntajeEstacion;
+
                             equiposMap[id].numEstaciones++;
                             equiposMap[id].puntosAcademicos += row.puntajeEstacion;
                             equiposMap[id].detalles.push({ estacion: row.estacion, puntos: row.puntajeEstacion });
                         }
                     });
+
                     this.rankingData = Object.values(equiposMap).sort((a, b) => b.puntosAcademicos - a.puntosAcademicos);
+                    
+                    this.estacionesData = Object.values(estMap).map(e => ({
+                        ...e,
+                        promedio: (e.suma / e.cantidad).toFixed(1)
+                    }));
+                    
+                    setTimeout(() => lucide.createIcons(), 50);
                 },
 
                 get filteredRanking() {
@@ -232,7 +309,6 @@
                     }
                 },
 
-                // Lógica de exportación (se mantiene igual para estabilidad)
                 exportarExcel() {
                     const data = this.rankingData.map((eq, i) => ({
                         'Posición': i + 1, 'Equipo': eq.nombre, 'Plantel': eq.plantel, 'Turno': eq.turno, 'Puntaje': eq.puntosAcademicos.toFixed(1)
