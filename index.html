@@ -124,14 +124,14 @@
                                         <p class="text-2xl font-black text-emerald-400" x-text="est.maximo"></p>
                                     </div>
                                     <div>
-                                        <p class="text-[10px] font-bold text-slate-400 uppercase">Sumatoria Total</p>
+                                        <p class="text-[10px] font-bold text-slate-400 uppercase">Sumatoria Estación</p>
                                         <p class="text-2xl font-black text-indigo-400" x-text="est.suma.toFixed(1)"></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex items-center gap-3">
                                 <div class="bg-slate-800 border border-slate-700 px-6 py-3 rounded-2xl text-center">
-                                    <p class="text-[10px] font-black text-slate-400 uppercase">Total Equipos</p>
+                                    <p class="text-[10px] font-black text-slate-400 uppercase">Equipos en Estación</p>
                                     <p class="text-xl font-black" x-text="est.cantidad"></p>
                                 </div>
                                 <button @click="exportarReporteEstacion(est)" class="bg-indigo-600 hover:bg-indigo-500 text-white p-4 rounded-2xl shadow-xl transition-all flex items-center gap-2 group">
@@ -147,7 +147,7 @@
                                     <tr class="text-[10px] uppercase tracking-widest text-slate-400 bg-slate-50 border-b">
                                         <th class="px-6 py-4 text-left">Equipo</th>
                                         <th class="px-6 py-4 text-left">Plantel / Turno</th>
-                                        <th class="px-6 py-4 text-center">Puntaje Obtenido</th>
+                                        <th class="px-6 py-4 text-center">Puntaje</th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-100">
@@ -395,15 +395,16 @@
                     doc.text(`REPORTE DE ESTACIÓN: ${est.nombre.toUpperCase()}`, 15, 20);
                     
                     doc.setFontSize(10);
-                    doc.text(`Promedio: ${est.promedio} | Máximo: ${est.maximo} | Total Equipos: ${est.cantidad}`, 15, 28);
-                    doc.text(`Sumatoria Total de la Estación: ${est.suma.toFixed(1)}`, 15, 33);
+                    doc.text(`Promedio: ${est.promedio} | Puntaje Máximo: ${est.maximo} | Equipos: ${est.cantidad}`, 15, 28);
 
                     doc.autoTable({
-                        startY: 40,
+                        startY: 35,
                         head: [['Equipo', 'Plantel', 'Turno', 'Puntaje']],
                         body: equipos.map(e => [e.nombre, e.plantel, e.turno, e.puntos]),
                         theme: 'striped',
-                        headStyles: { fillStyle: [30, 41, 59] }
+                        headStyles: { fillStyle: [30, 41, 59] },
+                        foot: [['', '', 'SUMATORIA ESTACIÓN', est.suma.toFixed(1)]],
+                        footStyles: { fillColor: [79, 70, 229], textColor: [255, 255, 255], fontStyle: 'bold' }
                     });
                     
                     doc.save(`Reporte_Estacion_${est.nombre}.pdf`);
